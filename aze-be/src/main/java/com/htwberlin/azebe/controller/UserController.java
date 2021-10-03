@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ *  User controller.
+ */
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -25,6 +28,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * Gets user by id.
+     *
+     * @param id the id
+     * @return the user by id
+     */
     @GetMapping("/get/id")
     @PreAuthorize("hasAnyRole('ROLE_IT_ADMIN','ROLE_EMPLOYER')")
     @ResponseStatus(HttpStatus.OK)
@@ -32,6 +41,11 @@ public class UserController {
         return userService.getUserById(id);
     }
 
+    /**
+     * Put user.
+     *
+     * @param userDto the user dto
+     */
     @PutMapping("/update")
     @PreAuthorize("hasAnyRole('ROLE_IT_ADMIN','ROLE_EMPLOYER')")
     @ResponseStatus(HttpStatus.OK)
@@ -40,6 +54,12 @@ public class UserController {
         userService.updateUser(user);
     }
 
+    /**
+     * Gets user by name.
+     *
+     * @param name the name
+     * @return the user by name
+     */
     @GetMapping("/get/name")
     @PreAuthorize("hasAnyRole('ROLE_IT_ADMIN','ROLE_EMPLOYER')")
     @ResponseStatus(HttpStatus.OK)
@@ -47,6 +67,11 @@ public class UserController {
         return userService.getUserByName(name);
     }
 
+    /**
+     * Delete user by id.
+     *
+     * @param id the id
+     */
     @DeleteMapping("/delete/id")
     @PreAuthorize("hasAnyRole('ROLE_IT_ADMIN','ROLE_EMPLOYER')")
     @ResponseStatus(HttpStatus.OK)
@@ -54,6 +79,11 @@ public class UserController {
         userService.deleteUserById(id);
     }
 
+    /**
+     * Delete user by name.
+     *
+     * @param name the name
+     */
     @DeleteMapping("/delete/name")
     @PreAuthorize("hasAnyRole('ROLE_IT_ADMIN','ROLE_EMPLOYER')")
     @ResponseStatus(HttpStatus.OK)
@@ -61,6 +91,11 @@ public class UserController {
         userService.deleteUserByName(name);
     }
 
+    /**
+     * Sign up.
+     *
+     * @param userDto the user dto
+     */
     @PostMapping("/sign-up")
     @PreAuthorize("hasAnyRole('ROLE_IT_ADMIN','ROLE_EMPLOYER')")
     public void signUp(@RequestBody UserDto userDto) {
@@ -69,6 +104,11 @@ public class UserController {
         userService.saveUser(user);
     }
 
+    /**
+     * Gets user list.
+     *
+     * @return the user list
+     */
     @GetMapping("/get/all")
     @PreAuthorize("hasRole('ROLE_EMPLOYER')")
     @ResponseStatus(HttpStatus.OK)
@@ -77,6 +117,12 @@ public class UserController {
     }
 
 
+    /**
+     * Convert to entity user.
+     *
+     * @param userDto the user dto
+     * @return the user
+     */
     public User convertToEntity(UserDto userDto) {
         return modelMapper.map(userDto, User.class);
     }

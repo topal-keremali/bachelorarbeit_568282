@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * User service.
+ */
 @Service
 public class UserService implements UserDetailsService {
 
@@ -24,28 +27,59 @@ public class UserService implements UserDetailsService {
 
     private UserRepository userRepository;
 
+    /**
+     * Instantiates a new User service.
+     *
+     * @param userRepository the user repository
+     */
     @Autowired
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
+    /**
+     * Delete user by id.
+     *
+     * @param id the id
+     */
     public void deleteUserById(int id) {
         userRepository.deleteById(id);
     }
 
+    /**
+     * Delete user by name.
+     *
+     * @param name the name
+     */
     public void deleteUserByName(String name) {
         userRepository.deleteUserByName(name);
     }
 
+    /**
+     * Update user.
+     *
+     * @param user the user
+     */
     public void updateUser(User user) {
         userRepository.save(user);
     }
 
+    /**
+     * Save user.
+     *
+     * @param user the user
+     */
     public void saveUser(User user) {
         userRepository.save(user);
         logger.info("New user added with name: {} and role: {}", user.getName(), user.getRole());
     }
 
+    /**
+     * Gets user by id.
+     *
+     * @param id the id
+     * @return the user by id
+     */
     public User getUserById(int id) {
         Optional<User> value = userRepository.findById(id);
 
@@ -54,6 +88,12 @@ public class UserService implements UserDetailsService {
         } else throw new UserNotExistentException("There is no user with id: " + id);
     }
 
+    /**
+     * Gets user by name.
+     *
+     * @param name the name
+     * @return the user by name
+     */
     public User getUserByName(String name) {
         return userRepository.getUserByName(name);
     }
@@ -68,6 +108,11 @@ public class UserService implements UserDetailsService {
         }
     }
 
+    /**
+     * Gets all user.
+     *
+     * @return the all user
+     */
     public List<User> getAllUser() {
         List<User> users = new ArrayList<>();
         userRepository.findAll().forEach(user -> {

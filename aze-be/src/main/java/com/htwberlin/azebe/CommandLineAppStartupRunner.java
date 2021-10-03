@@ -11,6 +11,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+/**
+ * CommandLineAppStartupRunner to check for first start
+ * to create necessary admin user in the database
+ */
 @Component
 public class CommandLineAppStartupRunner implements CommandLineRunner {
 

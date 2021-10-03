@@ -8,6 +8,9 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+/**
+ * The type Email service.
+ */
 @Service
 public class EmailService {
 
@@ -17,6 +20,12 @@ public class EmailService {
     @Value("${setup.gmail.to}")
     private String setTo;
 
+    /**
+     * Sends notification of begin.
+     *
+     * @param user  the user
+     * @param shift the shift
+     */
     public void sendBegin(User user, Shift shift) {
         String line = "\n***********************************\n";
         SimpleMailMessage message = new SimpleMailMessage();
@@ -28,6 +37,12 @@ public class EmailService {
         emailSender.send(message);
     }
 
+    /**
+     * Sends notification of end with the begin of that shift.
+     *
+     * @param user  the user
+     * @param shift the shift
+     */
     public void sendEnd(User user, Shift shift) {
         String line = "\n***********************************\n";
         SimpleMailMessage message = new SimpleMailMessage();

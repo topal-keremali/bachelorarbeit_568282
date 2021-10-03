@@ -12,6 +12,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Shift controller.
+ */
 @RestController
 @RequestMapping("/shift")
 public class ShiftController {
@@ -19,6 +22,15 @@ public class ShiftController {
     @Autowired
     private ShiftService shiftService;
 
+    /**
+     * Gets all shifts by user id.
+     *
+     * @param id    the id
+     * @param begin the begin
+     * @param end   the end
+     * @param token the token
+     * @return the all shifts by user id
+     */
     @GetMapping("/get/all/")
     @PreAuthorize("hasAnyRole('ROLE_IT_ADMIN','ROLE_EMPLOYER','ROLE_EMPLOYEE')")
     @ResponseStatus(HttpStatus.OK)
@@ -26,6 +38,12 @@ public class ShiftController {
         return shiftService.getAll(id, begin, end, token);
     }
 
+    /**
+     * Begin shift.
+     *
+     * @param id the id
+     * @return the map
+     */
     @PutMapping("/begin")
     @PreAuthorize("hasAnyRole('ROLE_IT_ADMIN','ROLE_EMPLOYER','ROLE_EMPLOYEE')")
     @ResponseStatus(HttpStatus.OK)
@@ -34,6 +52,12 @@ public class ShiftController {
         return Collections.singletonMap("success", true);
     }
 
+    /**
+     * End shift.
+     *
+     * @param id the id
+     * @return the map
+     */
     @PutMapping("/end")
     @PreAuthorize("hasAnyRole('ROLE_IT_ADMIN','ROLE_EMPLOYER','ROLE_EMPLOYEE')")
     @ResponseStatus(HttpStatus.OK)

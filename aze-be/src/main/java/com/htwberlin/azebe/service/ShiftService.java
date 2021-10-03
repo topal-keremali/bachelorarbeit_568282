@@ -23,6 +23,9 @@ import java.util.Optional;
 import static com.htwberlin.azebe.security.SecurityConstants.SECRET;
 import static com.htwberlin.azebe.security.SecurityConstants.TOKEN_PREFIX;
 
+/**
+ * The type Shift service.
+ */
 @Service
 public class ShiftService {
 
@@ -34,6 +37,13 @@ public class ShiftService {
 
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
+    /**
+     * Instantiates a new Shift service.
+     *
+     * @param shiftRepository the shift repository
+     * @param userService     the user service
+     * @param emailService    the email service
+     */
     @Autowired
     public ShiftService(ShiftRepository shiftRepository, UserService userService, EmailService emailService) {
         this.shiftRepository = shiftRepository;
@@ -42,6 +52,12 @@ public class ShiftService {
     }
 
 
+    /**
+     * Start shift .
+     *
+     * @param id the id
+     * @return the shift
+     */
     public Shift startShift(int id) {
         LocalTime midnight = LocalTime.MIDNIGHT;
         var today = LocalDate.now(ZoneId.of("Europe/Berlin"));
@@ -59,6 +75,12 @@ public class ShiftService {
         }
     }
 
+    /**
+     * End shift .
+     *
+     * @param id the id
+     * @return the shift
+     */
     public Shift endShift(int id) {
         LocalTime midnight = LocalTime.MIDNIGHT;
         var now = LocalDateTime.now();
@@ -83,6 +105,15 @@ public class ShiftService {
         }
     }
 
+    /**
+     * Gets all.
+     *
+     * @param id    the id
+     * @param begin the begin
+     * @param end   the end
+     * @param token the token
+     * @return the all
+     */
     public List<Shift> getAll(int id, Optional<String> begin, Optional<String> end, String token) {
         //parse date
         LocalDate beginDate;

@@ -24,11 +24,20 @@ import java.util.ArrayList;
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 import static com.htwberlin.azebe.security.SecurityConstants.*;
 
+/**
+ * The type Jwt authentication filter.
+ */
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private AuthenticationManager authenticationManager;
     private UserRepository userRepository;
 
+    /**
+     * Instantiates a new Jwt authentication filter.
+     *
+     * @param authenticationManager the authentication manager
+     * @param context               the context
+     */
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager, ApplicationContext context) {
         this.authenticationManager = authenticationManager;
         this.userRepository = context.getBean(UserRepository.class);
@@ -49,11 +58,19 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         } catch (IOException e) {
             System.err.println(e.getMessage());
             throw new UnauthorizedException("internal problem");
-        } catch (InternalAuthenticationServiceException e){
+        } catch (InternalAuthenticationServiceException e) {
             throw new UsernameNotFoundException("User existiert nicht");
         }
     }
 
+    /**
+     * Creates new JWT with successfull Authentication
+     *
+     * @param req   http-request
+     * @param res   http-response
+     * @param chain filterchain
+     * @param auth  auth object
+     */
     @Override
     protected void successfulAuthentication(HttpServletRequest req,
                                             HttpServletResponse res,

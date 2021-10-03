@@ -21,11 +21,20 @@ import java.io.IOException;
 
 import static com.htwberlin.azebe.security.SecurityConstants.*;
 
+/**
+ * Jwt authorization filter.
+ */
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
     private Logger jwtLogger = LoggerFactory.getLogger(JWTAuthorizationFilter.class);
     private UserRepository userRepository;
 
+    /**
+     * Instantiates a new Jwt authorization filter.
+     *
+     * @param authManager the auth manager
+     * @param context     the context
+     */
     public JWTAuthorizationFilter(AuthenticationManager authManager, ApplicationContext context) {
         super(authManager);
         this.userRepository = context.getBean(UserRepository.class);
@@ -48,6 +57,12 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
         chain.doFilter(req, res);
     }
 
+    /**
+     * Decodes and checks for valid token
+     *
+     * @param request the request that was made
+     * @return User with authorities and userobject
+     */
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
         try {
 

@@ -16,6 +16,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+/**
+ * Class for web security config.
+ *
+ */
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -26,6 +30,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private UserService userService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    /**
+     * Instantiates a new Web security config.
+     *
+     * @param userService           the user service
+     * @param bCryptPasswordEncoder the b crypt password encoder
+     */
     public WebSecurityConfig(UserService userService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userService = userService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
@@ -47,6 +57,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
     }
 
+    /**
+     * Bean for Cors configuration
+     *
+     * @return the cors configuration source
+     */
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         final var source = new UrlBasedCorsConfigurationSource();
