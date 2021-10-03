@@ -29,7 +29,7 @@ public class EmailService {
     public void sendBegin(User user, Shift shift) {
         String line = "\n***********************************\n";
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("keremalitopal@gmail.com");
+        message.setFrom("foo@bar.com");
         message.setTo(setTo);
         message.setSubject("Beginn der werktäglichen Zeit");
         String text = line + user.getName() + "\n" + "Beginn: " + shift.getBegin().toString() + line;
@@ -46,7 +46,7 @@ public class EmailService {
     public void sendEnd(User user, Shift shift) {
         String line = "\n***********************************\n";
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("keremalitopal@gmail.com");
+        message.setFrom("foo@bar.com");
         message.setTo(setTo);
         message.setSubject("Ende der werktäglichen Zeit");
         String textBegin = line + user.getName() + "\n" + "Beginn: " + shift.getBegin().toString() + line;
