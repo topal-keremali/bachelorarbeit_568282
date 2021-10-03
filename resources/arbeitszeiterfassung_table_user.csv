@@ -1,0 +1,8 @@
+"id","name","role","username","password"
+"1","Admin","0","admin","$2a$10$l7LcKnoyRgXqJy5W69meZOhRzeMI74BagkFClfqUX1c.yEfOjcFVG"
+"2","Testperson1","2","testperson1","$2a$10$5g5rY7Ehh/gY2SUrtlceYuo98rJl7xIQ8R05zlokJFZcJc7OY94kO"
+"3","Testperson2","2","testperson2","$2a$10$hHof9aNBBXcyEHfuj6.KUez756V5mgJhyKhrHF7jfytjJcy3itEjO"
+"4","Testperson3","2","testperson3","$2a$10$S2T56dp7szLJAHfjDcYHzOiw6PMvIBYQnLyaVqogI2VqfKHGDPEQq"
+"5","Testperson4","2","testperson4","$2a$10$BT4lcU9U9LQ9gLtLv7bgJ.Yp9nUjJMfgejEnNlOqh6BevmESmRui."
+"6","Testperson5","2","testperson5","$2a$10$BU6n.099chNNcwIhlZHMLeO8pHhBNse0xV1CAq.hOVNO68960Eyh2"
+"27","Arbeitgeber","1","arbeitgeber","$2a$10$AwdcPtHntA760Rx/O2UQqOH7XlSvtyDOXQIZjWmiO2tBYWS2fF0Ia"

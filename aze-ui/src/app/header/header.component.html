@@ -1,0 +1,8 @@
+<nav class="d-flex justify-content-end navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand mx-auto"> Arbeitszeiterfassung Prototyp &nbsp;
+        {{date   | date: "dd.MM.yyyy"}}
+        {{date   | date: "HH:mm:ss"}}
+    </a>
+
+    <button *ngIf="token()" (click)="logout()" [routerLink]="'/login'" mat-raised-button color="primary">LogOut</button>
+</nav>
